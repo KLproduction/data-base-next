@@ -21,7 +21,9 @@ async function getPost(){
   return posts;
 }
 
+
 export default async function Home() {
+  
   const posts = await getPost();
   console.log(posts)
 
