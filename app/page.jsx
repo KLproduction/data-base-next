@@ -6,19 +6,25 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import DeleteBtn from "./components/DeleteBtn";
 
 async function getPost(){
-  const posts = await prisma.post.findMany({
-    where:{
-      published:true,
-    },
-      include:{
-        author:{
-          select:{name:true}
+  try{
+    const posts = await prisma.post.findMany({
+      where:{
+        published:true,
+      },
+        include:{
+          author:{
+            select:{name:true}
+          }
         }
-      }
-    
-  })
+      
+    })
+    console.log("Fetched posts:", posts);
+    return posts;
 
-  return posts;
+  }catch(error){
+    console.error("Error fetching posts:", error);
+    throw error;
+  }
 }
 
 
