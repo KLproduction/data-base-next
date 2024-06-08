@@ -11,11 +11,13 @@ export default function DeleteBtn({ postId }) {
         const url = `${process.env.NEXT_PUBLIC_API_URL}/api/post-end/${postId}`;
         await fetch(url, {
           method: "DELETE"
-        });
-        router.refresh();
+          });
+          router.refresh();
       } catch (err) {
         console.error('Error in fetch:', err);
       }
+
+      
     }
   
     return (
